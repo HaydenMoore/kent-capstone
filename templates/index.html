@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Blog Post - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <div class="login">
+     <h1>Tutor Scheduling</h1>
+    <div class="login-page">
+
+      <div class="form">
+
+        <form action="{{ url_for('courses') }}" class="login-form" method="post">
+          <input type="text" placeholder="username" name="username"/>
+          <input type="password" placeholder="password" name="password"/>
+          <input class="submit-button" type="submit"/>
+          <p class="message">Forgot your <a href="#">username</a> or <a>password</a>?</p>
+        </form>
+      </div>
+    </div>
+    </div>
+    <!-- Bootstrap core JavaScript -->
+
+    <script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="js/jquery.dlmenu.js"></script>
+    <script src="js/pagetransitions.js"></script>
+  </body>
+
+</html>
