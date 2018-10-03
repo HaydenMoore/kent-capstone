@@ -6,6 +6,7 @@ import sqlite3
 import time
 import datetime
 
+
 def create_table(c):
     c.execute('CREATE TABLE IF NOT EXISTS users(datestamp TEXT, username TEXT, password TEXT)')
 
@@ -17,13 +18,22 @@ def data_entry(c,conn, username, password):
     c.close()
     conn.close()
 
-def del_and_update(c, conn):
-    c.execute('SELECT password FROM users WHERE username = hayden')
+def authorize_user(c, conn, password):
+    c.execute('SELECT password FROM users WHERE username ="hayden"')
+    authenticated = False
     for row in c.fetchall():
-        password = row[2]
-        print(password)
+        db_password = row
+        db_password = ''.join(db_password)
+
+        print(db_password)
+
+        if(password == db_password):
+            authenticated = True
+        else:
+            authenticated = False
     conn.commit
     conn.close()
+    return authenticated
 
 #create app object
 app = Flask(__name__)
@@ -37,20 +47,22 @@ def run():
 def courses():
     username = request.form['username']
     password = request.form['password']
-
     # QUERY DATABASE HERE
     conn = sqlite3.connect('users.db')
     c = conn.cursor()
     #This will create a new table
     #create_table(c)
     # data_entry(c, conn, username, password)
-    #del_and_update(c, conn)
+    authenticated = authorize_user(c, conn, password)
+    print(authenticated)
+    # #Debugging
+    # print('RECIEVED DATA')
+    # print(username, password)
+    if(authenticated):
+        return render_template('courses.html')
+    else:
+        return render_template('index.html')
 
-    #Debugging
-    print('RECIEVED DATA')
-    print(username, password)
-
-    return render_template('courses.html')
 
 #run server
 if __name__ == "__main__":
