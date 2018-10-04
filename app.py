@@ -18,8 +18,8 @@ def data_entry(c,conn, username, password):
     c.close()
     conn.close()
 
-def authorize_user(c, conn, password):
-    c.execute('SELECT password FROM users WHERE username ="hayden"')
+def authorize_user(c, conn, username, password):
+    c.execute('SELECT password FROM users WHERE username =?', (username,))
     authenticated = False
     for row in c.fetchall():
         db_password = row
@@ -45,6 +45,7 @@ def run():
 
 @app.route('/courses', methods=['POST'])
 def courses():
+    # Captures user data
     username = request.form['username']
     password = request.form['password']
     # QUERY DATABASE HERE
@@ -53,7 +54,7 @@ def courses():
     #This will create a new table
     #create_table(c)
     # data_entry(c, conn, username, password)
-    authenticated = authorize_user(c, conn, password)
+    authenticated = authorize_user(c, conn, username, password)
     print(authenticated)
     # #Debugging
     # print('RECIEVED DATA')
@@ -61,7 +62,7 @@ def courses():
     if(authenticated):
         return render_template('courses.html')
     else:
-        return render_template('index.html')
+        return render_template('index.html', auth = authenticated)
 
 
 #run server
