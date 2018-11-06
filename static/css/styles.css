@@ -117,10 +117,28 @@ html {
   color: #EF3B3A;
 }
 body {
-  background: linear-gradient(to bottom, #4994CB, #002664);
+  background: #002664;
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin:0px;
 }
 
+/*********COURSES*************/
+
+
+#course0,
+#course1,
+#course2,
+#course3,
+#course-day0,
+#course-day1,
+#course-day2,
+#course-day3{
+  color: #fff;
+    font-size: 30px;
+    font-weight: 300;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}

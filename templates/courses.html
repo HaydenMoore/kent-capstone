@@ -21,11 +21,23 @@
   <body>
     <div class="login">
      <h1>Which Class?</h1>
-    <div class="courses-page">
+      <div class="courses-page">
+        <a><h2 id="course0"></h2></a>
+        <p id="course-day0"></p>
+        <a><h2 id="course1"></h2></a>
+        <p id="course-day1"></p>
+        <a><h2 id="course2"></h2></a>
+        <p id="course-day2"></p>
+        <a><h2 id="course3"></h2></a>
+        <p id="course-day3"></p>
+      </div>
     </div>
-    </div>
+    <script>
+      courses = {{ courses | safe }}
+      days = {{ days | safe }}
+    </script>
+    <script src="{{url_for('static', filename='courses.js')}}"></script>
     <!-- Bootstrap core JavaScript -->
-
     <script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
