@@ -1,9 +1,23 @@
 for (var i = 0; i < 4; i++){
     var numString = i.toString();
     var thisCourse = "course" + numString;
-    var thisCourseDay = "course-day" + numString;
-    course = courses[i];
-    day = days[i];
+    var thisCourseLink = "course-link" + numString;
+    var thisCourseInput = "course-input" + numString;
+    var course = courses[i];
+    var day = days[i];
+    var time = times[i];
     document.getElementById(thisCourse).innerHTML = course;
-    document.getElementById(thisCourseDay).innerHTML = day;
+    document.getElementById(thisCourseLink).href = "/comments";
+  
 };
+
+//storing local variables
+localStorage.setItem("username", username);
+
+document.getElementById('username').innerHTML = username;
+
+//Creating on click events for each course
+document.getElementById("course-link0").onclick = function fun() {
+        var myCourse = document.getElementById("course0").innerHTML;
+        localStorage.setItem("course", myCourse);
+}

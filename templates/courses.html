@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Blog Post - Start Bootstrap Template</title>
+    <title>Courses | Tutor Scheduling</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -19,22 +19,27 @@
   </head>
 
   <body>
-    <div class="login">
+    <div class="courses">
+      <div id="username"></div>
+      <a href="/"class="log-out-button">Log Out</a>
      <h1>Which Class?</h1>
-      <div class="courses-page">
-        <a><h2 id="course0"></h2></a>
-        <p id="course-day0"></p>
-        <a><h2 id="course1"></h2></a>
-        <p id="course-day1"></p>
-        <a><h2 id="course2"></h2></a>
-        <p id="course-day2"></p>
-        <a><h2 id="course3"></h2></a>
-        <p id="course-day3"></p>
-      </div>
+      <form action="{{ url_for('comments') }}" class="courses-form" method="post">
+        <div class="courses-page">
+          <a id="course-link0"><h2 id="course0"></h2></a>
+          <p><div id="course-day0"></div><div id="course-time0"></div></p>
+          <a id="course-link1"><h2 id="course1"></h2></a>
+          <p><div id="course-day1"></div><div id="course-time1"></div></p>
+          <a id="course-link2"><h2 id="course2"></h2></a>
+          <p><div id="course-day2"></div><div id="course-time2"></div></p>
+          <a id="course-link3"><h2 id="course3"></h2></a>
+          <p><div id="course-day3"></div><div id="course-time3"></div></p>
+        </div>
     </div>
     <script>
       courses = {{ courses | safe }}
       days = {{ days | safe }}
+      times = {{ times | safe }}
+      username = "{{ username }}"
     </script>
     <script src="{{url_for('static', filename='courses.js')}}"></script>
     <!-- Bootstrap core JavaScript -->

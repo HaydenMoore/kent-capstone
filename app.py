@@ -60,6 +60,16 @@ def get_days(c, conn):
     json_data = json.dumps(data)
     return json_data
 
+def get_times(c, conn):
+    c.execute('SELECT time, end FROM courses')
+    data = {}
+    i = 0
+    for row in c.fetchall():
+        data[i] = row
+        i = i + 1
+    json_data = json.dumps(data)
+    return json_data
+
 
 
 
@@ -89,6 +99,7 @@ def courses():
     #data_entry(c, conn, username, password)
     courses = get_courses(c, conn)
     days = get_days(c, conn)
+    times = get_times(c, conn)
     # #---------------------------------- END DEBUGGING
 
     authenticated = False
@@ -96,10 +107,15 @@ def courses():
 
     if(authenticated):
 
-        return render_template('courses.html', courses = courses, days=days)
+        return render_template('courses.html', courses = courses, days=days, times = times, username = username)
     else:
         return render_template('index.html', auth = authenticated)
 
+
+@app.route('/comments', methods=['GET', 'POST'])
+def comments():
+
+    return render_template('comments.html')
 
 #run server
 if __name__ == "__main__":
