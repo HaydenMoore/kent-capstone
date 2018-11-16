@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Scheduling | Tutor Scheduling</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet">
+
+
+  </head>
+
+  <body>
+    <div id="username-comments"></div>
+      <a href="/"class="log-out-button">Log Out</a>
+    <div class="schedule">
+
+      <h1>Scheduling</h1>
+    <form action="{{ url_for('schedule') }}" class="schedule-form" method="post">
+      <table border = "1" style="background: #fff;">
+          <tr>
+              <th></th>
+            <th>Course</th>
+            <th>Tutors</th>
+            <th>Day</th>
+            <th>Time</th>
+            <th>Notes</th>
+          </tr>
+          <tr>
+              <td><input id="input0" type="checkbox" name="checkbox"></td>
+            <td id="course-0"></td>
+            <td id="tutor0"></td>
+            <td id="day0"></td>
+            <td id="time0"></td>
+            <td id="note0"></td>
+          </tr>
+          <tr>
+              <td><input id="input1" type="checkbox" name="checkbox"></td>
+            <td id="course-1"></td>
+            <td id="tutor1"></td>
+            <td id="day1"></td>
+            <td id="time1"></td>
+            <td id="note1"></td>
+          </tr>
+         <tr>
+             <td><input id="input2" type="checkbox" name="checkbox"></td>
+            <td id="course-2"></td>
+            <td id="tutor2"></td>
+            <td id="day2"></td>
+            <td id="time2"></td>
+            <td id="note2"></td>
+          </tr>
+          <tr>
+              <td><input id="input3" type="checkbox" name="checkbox"></td>
+            <td id="course-3"></td>
+            <td id="tutor3"></td>
+            <td id="day3"></td>
+            <td id="time3"></td>
+            <td id="note3"></td>
+          </tr>
+        </table>
+        <input class="submit-button" type="submit" value="Schedule Appointment"/>
+    </form>
+    </div>
+    <script>
+        var courses = {{ courses | safe }}
+        var tutors = {{ tutors | safe }}
+        var days = {{ days | safe }}
+        var times = {{ times | safe }}
+        var notes = {{ notes | safe }}
+        var course_numbers = {{ course_numbers | safe }}
+    </script>
+    <script src="{{url_for('static', filename='schedule.js')}}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="js/jquery.dlmenu.js"></script>
+    <script src="js/pagetransitions.js"></script>
+  </body>
+
+</html>

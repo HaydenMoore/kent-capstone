@@ -50,6 +50,26 @@ def get_courses(c, conn):
     json_data = json.dumps(data)
     return json_data
 
+def get_course_numbers(c, conn):
+    c.execute('SELECT course_number FROM courses')
+    data = {}
+    i = 0
+    for row in c.fetchall():
+        data[i] = row
+        i = i + 1
+    json_data = json.dumps(data)
+    return json_data
+
+def get_tutors(c,conn):
+    c.execute('SELECT tutor_name FROM courses')
+    data = {}
+    i = 0
+    for row in c.fetchall():
+        data[i] = row
+        i = i + 1
+    json_data = json.dumps(data)
+    return json_data
+
 def get_days(c, conn):
     c.execute('SELECT day FROM courses')
     data = {}
@@ -70,6 +90,15 @@ def get_times(c, conn):
     json_data = json.dumps(data)
     return json_data
 
+def get_notes(c, conn):
+    c.execute('SELECT notes FROM courses')
+    data = {}
+    i = 0
+    for row in c.fetchall():
+        data[i] = row
+        i = i + 1
+    json_data = json.dumps(data)
+    return json_data
 
 
 
@@ -116,6 +145,27 @@ def courses():
 def comments():
 
     return render_template('comments.html')
+
+@app.route('/schedule', methods=['GET', 'POST'])
+def schedule():
+    conn = sqlite3.connect('users.db')
+    c = conn.cursor()
+
+    #Query database to set appointment for student
+    if request.method == 'POST':
+        appointment = request.form['checkbox']
+        print(appointment)
+
+    courses = get_courses(c,conn)
+    tutors = get_tutors(c,conn)
+    days = get_days(c, conn)
+    times = get_times(c, conn)
+    notes = get_notes(c, conn)
+    course_numbers = get_course_numbers(c, conn)
+    # close connection
+    conn.commit
+    conn.close()
+    return render_template('schedule.html', courses = courses, tutors = tutors, days = days, times = times, notes = notes, course_numbers = course_numbers)
 
 #run server
 if __name__ == "__main__":
