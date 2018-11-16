@@ -16,13 +16,36 @@
     <!-- Custom styles for this template -->
     <link href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet">
 
+
   </head>
 
   <body>
+    <div id="username-comments"></div>
+      <a href="/"class="log-out-button">Log Out</a>
     <div class="comments">
 
+      <h1>Comments and Scheduling</h1>
+      <div class="comment-block">
+
+        <div class="comment-user0">Homework Assignment</div>
+        <em><div class="comment-user-comment0">This class sucks...</div></em>
+
+        <div class="comment-user1">Final Project Help</div>
+        <em><div class="comment-user-comment1">This class is the best</div></em>
+
+        <div class="comment-user2">Study buddy</div>
+        <em><div class="comment-user-comment2">I need help with this homework assignment</div></em>
+
+        <div class="comment-user3">Help with Homework</div>
+        <em><div class="comment-user-comment3">killed that test</div></em>
+
+      </div>
+      <div class="schedule-block">
+        <h3>Schedule an appointment for this class below.</h3>
+        <a href="/schedule" class="schedule-button" type="submit">Schedule Appointment</a>
+      </div>
     </div>
-    <script>alert(localStorage.getItem("username"));</script>
+    <script src="{{url_for('static', filename='comments.js')}}"></script>
     <!-- Bootstrap core JavaScript -->
     <script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>

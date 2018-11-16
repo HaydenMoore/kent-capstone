@@ -20,7 +20,13 @@ html {
    width: 50%;
 
 }
+#username-comments {
+     float: right;
+    color: #fff;
+    font-size: 1.5em;
+    padding: 10px 10px 0px 0px;
 
+}
 #username {
     float: right;
     color: #fff;
@@ -51,9 +57,10 @@ html {
 
 .login h1,
  .courses h1,
- .comments h1 {
+ .comments h1,
+  .schedule h1{
     color: #efab00;
-    font-size:60px;
+    font-size:70px;
     font-weight: 300;
     text-align: center;
     padding-top: 50px;
@@ -170,7 +177,7 @@ body {
 #course-time2,
 #course-time3 {
   color: #fff;
-    font-size: 30px;
+    font-size: 35px;
     font-weight: 300;
     text-align: center;
     padding-top: 20px;
@@ -178,3 +185,79 @@ body {
 }
 
 
+/*********COMMENTS*************/
+
+.comments {
+    max-width:1200px;
+}
+.comment-block {
+    float: left;
+    background:#fff;
+    width: 50%;
+
+
+}
+.schedule-block {
+    float: right;
+    width: 50%;
+
+}
+.schedule-block h3 {
+    margin: 0px 20px;
+}
+.schedule-button{
+    width: 100%;
+    padding: 20px;
+    margin: 0px 20px;
+
+}
+
+.comment-user0,
+.comment-user-comment0,
+.comment-user1,
+.comment-user-comment1,
+.comment-user2,
+.comment-user-comment2,
+.comment-user3,
+.comment-user-comment3 {
+    padding: 20px;
+}
+
+.comment-user-comment0,
+.comment-user-comment1,
+.comment-user-comment2,
+.comment-user-comment3 {
+    border-bottom: solid 2px #000;
+}
+
+
+.comment-user0,
+.comment-user1,
+.comment-user2,
+.comment-user3 {
+    border-bottom: solid 1px #eee;
+    font-size: 25px;
+}
+
+
+/*********SCHEDULING*************/
+
+table td {
+    padding: 20px;
+}
+
+table {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+
+table th {
+    text-align: center;
+}
+
+.schedule {
+    max-width: 1200px;
+    margin: 0 auto;
+}
