@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Comments | Tutor Scheduling</title>
+    <title>Profile | Tutor Scheduling</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -23,36 +23,30 @@
     <a href="/courses"class="back-button">Back</a>
     <a href="/profile" onclick="myProfile()"><div id="username-comments"></div></a>
       <a href="/"class="log-out-button">Log Out</a>
-    <div class="comments">
+    <div class="profile">
 
-      <h1>Comments and Scheduling</h1>
-      <div class="comment-block">
-
-        <a href="#"><div class="comment-user0">Homework Assignment</div>
-        <em><div class="comment-user-comment0">This class sucks...</div></em>
-        </a>
-
-        <a href="#">
-        <div class="comment-user1">Final Project Help</div>
-        <em><div class="comment-user-comment1">This class is the best</div></em>
-        </a>
-
-        <a href="#">
-        <div class="comment-user2">Study buddy</div>
-        <em><div class="comment-user-comment2">I need help with this homework assignment</div></em>
-        </a>
-
-        <a href="#">
-        <div class="comment-user3">Help with Homework</div>
-        <em><div class="comment-user-comment3">killed that test</div></em>
-        </a>
+      <h1>Profile</h1>
+      <div class="profile-block">
+          <div class="profile-pic">
+            <p><img src="../static/css/img/flash.png"/></p>
+          </div>
+          <div class="profile-data">
+              <div id="name"><h2>Name: </h2><h2 class="name-text"></h2></div>
+              <div id="id"><h2>KSU ID: </h2><h2 class="id-text"></h2></div>
+              <div id="email"><h2>Email: </h2><h2 class="email-text"></h2></div>
+              <div id="phone"><h2>Phone: </h2><h2 class="phone-text"></h2></div>
+              <div id="scheduled"><h2>Scheduled For: </h2><h2 class="scheduled-text"></h2></div>
+          </div>
       </div>
-      <h2 class="schedule-title">Schedule an appointment for this class below.</h2>
-      <div class="schedule-block">
 
-        <a href="/schedule" class="schedule-button" type="submit">Schedule Appointment</a>
-      </div>
     </div>
+    <script>
+        var id = "{{ id | safe }}"
+        var email = "{{ email | safe }}"
+        var phone = "{{ phone | safe }}"
+        var scheduled = "{{ scheduled | safe }}"
+        alert(id);
+    </script>
     <script src="{{url_for('static', filename='comments.js')}}"></script>
     <!-- Bootstrap core JavaScript -->
     <script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>

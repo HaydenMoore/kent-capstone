@@ -20,7 +20,8 @@
 
   <body>
     <div class="courses">
-      <div id="username"></div>
+      <a href="/"class="back-button">Back</a>
+      <a href="/profile" onclick="myProfile()"><div id="username-comments"></div></a>
       <a href="/"class="log-out-button">Log Out</a>
      <h1>Which Class?</h1>
       <form action="{{ url_for('comments') }}" class="courses-form" method="post">
@@ -42,6 +43,7 @@
       username = "{{ username }}"
     </script>
     <script src="{{url_for('static', filename='courses.js')}}"></script>
+    <script src="{{url_for('static', filename='comments.js')}}"></script>
     <!-- Bootstrap core JavaScript -->
     <script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>

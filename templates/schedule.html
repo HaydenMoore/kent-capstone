@@ -20,7 +20,8 @@
   </head>
 
   <body>
-    <div id="username-comments"></div>
+    <a href="/comments"class="back-button">Back</a>
+    <a href="/profile" onclick="myProfile()"><div id="username-comments"></div></a>
       <a href="/"class="log-out-button">Log Out</a>
     <div class="schedule">
 
@@ -80,6 +81,7 @@
         var course_numbers = {{ course_numbers | safe }}
     </script>
     <script src="{{url_for('static', filename='schedule.js')}}"></script>
+    <script src="{{url_for('static', filename='comments.js')}}"></script>
     <!-- Bootstrap core JavaScript -->
     <script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
