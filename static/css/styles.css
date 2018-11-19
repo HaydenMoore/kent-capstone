@@ -42,6 +42,14 @@ html {
     background:#fff;
 }
 
+.back-button {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    padding: 10px;
+    background:#fff;
+}
+
 /****** LOGIN ********/
 
 .login,
@@ -58,7 +66,8 @@ html {
 .login h1,
  .courses h1,
  .comments h1,
-  .schedule h1{
+  .schedule h1,
+  .profile h1 {
     color: #efab00;
     font-size:70px;
     font-weight: 300;
@@ -239,6 +248,10 @@ body {
     font-size: 25px;
 }
 
+.comment-block a:hover {
+    background: #eee;
+}
+
 
 /*********SCHEDULING*************/
 
@@ -260,4 +273,21 @@ table th {
 .schedule {
     max-width: 1200px;
     margin: 0 auto;
+}
+
+/*********PROFILE*************/
+
+.profile {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.profile-pic {
+    float: left;
+    width: 30%;
+}
+
+.profile-data {
+    float: right;
+    width: 70%;
 }

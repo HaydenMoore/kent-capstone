@@ -11,10 +11,20 @@ for (var i = 0; i < 4; i++){
   
 };
 
-//storing local variables
-localStorage.setItem("username", username);
 
-document.getElementById('username').innerHTML = username;
+
+if (username) {
+    //storing local variables
+    localStorage.setItem("username", username);
+    try {
+    document.getElementById('username').innerHTML = username;
+    }
+    catch(error) {
+        console.log(error);
+    }
+}
+
+
 
 //Creating on click events for each course
 document.getElementById("course-link0").onclick = function fun() {
