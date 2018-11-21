@@ -26,12 +26,19 @@ def data_entry_courses(c,conn):
     c.close()
     conn.close()
 
+def update_scheduled(c, conn, username, course):
+    c.execute("UPDATE users SET course_number = \'" + str(course) + "\' WHERE username = \'" + str(username) + "\'")
+    conn.commit()
+
+
 def authorize_user(c, conn, username, password):
     c.execute('SELECT password FROM users WHERE username =?', (username,))
     authenticated = False
     for row in c.fetchall():
         db_password = row
+
         db_password = ''.join(db_password)
+
 
         if(password == db_password):
             authenticated = True
@@ -110,7 +117,11 @@ def get_id(c, conn, username):
     for row in c.fetchall():
         data[i] = row
         i = i + 1
-    return data
+    data = json.dumps(data)
+    json_data = json.loads(data)
+    return json_data
+
+    return json_data
 
 def get_email(c, conn, username):
     c.execute('SELECT email FROM users WHERE username=?', (username,))
@@ -119,7 +130,11 @@ def get_email(c, conn, username):
     for row in c.fetchall():
         data[i] = row
         i = i + 1
-    return data
+
+    data = json.dumps(data)
+    json_data = json.loads(data)
+
+    return json_data
 
 def get_phone(c, conn, username):
     c.execute('SELECT phone FROM users WHERE username=?', (username,))
@@ -128,7 +143,11 @@ def get_phone(c, conn, username):
     for row in c.fetchall():
         data[i] = row
         i = i + 1
-    return data
+
+    data = json.dumps(data)
+    json_data = json.loads(data)
+
+    return json_data
 
 def get_scheduled(c, conn, username):
     c.execute('SELECT course_number FROM users WHERE username=?', (username,))
@@ -137,7 +156,11 @@ def get_scheduled(c, conn, username):
     for row in c.fetchall():
         data[i] = row
         i = i + 1
-    return data
+
+    data = json.dumps(data)
+    json_data = json.loads(data)
+
+    return json_data
 
 #create app object
 app = Flask(__name__)
@@ -163,19 +186,34 @@ def courses():
     courses = get_courses(c, conn)
     days = get_days(c, conn)
     times = get_times(c, conn)
-    # #---------------------------------- END DEBUGGING
 
+    # #---------------------------------- END DEBUGGING
+    id = ""
     authenticated = True
     if request.method == 'POST':
         # Captures user data
         username = request.form['username']
         password = request.form['password']
+        #building user data
+        # id = get_id(c, conn, username)
+        # email = get_email(c, conn, username)
+        # phone = get_phone(c, conn, username)
+        # scheduled = get_scheduled(c, conn, username)
 
 
         authenticated = False
         authenticated = authorize_user(c, conn, username, password)
 
         if (authenticated):
+            f = open("user.txt", "r")
+            lines = f.readlines()
+            f.close()
+
+            f = open("user.txt", "w")
+            for line in lines:
+                if line != username:
+                    f.write(username)
+            f.close()
             return render_template('courses.html', courses=courses, days=days, times=times, username=username)
         else:
             return render_template('index.html', auth=authenticated)
@@ -200,7 +238,28 @@ def schedule():
     #Query database to set appointment for student
     if request.method == 'POST':
         appointment = request.form['checkbox']
-        print(appointment)
+
+        conn = sqlite3.connect('users.db')
+        c = conn.cursor()
+
+        data = [x.strip() for x in appointment.split(',')]
+        course = data[0]
+        username = data[1]
+
+        update_scheduled(c, conn, username, course)
+        id = get_id(c, conn, username)
+        email = get_email(c, conn, username)
+        phone = get_phone(c, conn, username)
+        scheduled = get_scheduled(c, conn, username)
+        # close connection
+        conn.commit()
+        c.close()
+        conn.close()
+
+        return render_template('profile.html', id=id['0'][0], email=email['0'][0], phone=phone['0'][0],
+                               scheduled=scheduled['0'][0])
+
+
 
     courses = get_courses(c,conn)
     tutors = get_tutors(c,conn)
@@ -215,27 +274,42 @@ def schedule():
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
+    conn = sqlite3.connect('users.db')
+    c = conn.cursor()
 
     if request.method == 'POST':
+
         username = request.form['javascript_data']
 
-        conn = sqlite3.connect('users.db')
-        c = conn.cursor()
 
         id = get_id(c, conn, username)
+
         email = get_email(c, conn, username)
+
         phone = get_phone(c, conn, username)
+
         scheduled = get_scheduled(c, conn, username)
 
-        # close connection
-        conn.commit
-        conn.close()
-        return render_template('profile.html', id=id[0], email=email[0], phone=phone[0], scheduled=scheduled[0])
 
+        print(id, email, phone, scheduled)
+        return render_template('profile.html', id=id)
 
+    f = open("user.txt", "r")
+    line = f.readline()
+    f.close()
 
+    username = line
 
-    return render_template('profile.html')
+    id = get_id(c, conn, username)
+    email = get_email(c, conn, username)
+    phone = get_phone(c, conn, username)
+    scheduled = get_scheduled(c, conn, username)
+    # close connection
+    conn.commit()
+    c.close()
+    conn.close()
+
+    return render_template('profile.html', id=id['0'][0], email=email['0'][0], phone = phone['0'][0], scheduled = scheduled['0'][0])
 
 
 

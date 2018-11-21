@@ -1,4 +1,7 @@
+
+
 for (var i = 0; i < 4; i++){
+
     var numString = i.toString();
     var thisCourse = "course" + numString;
     var thisCourseLink = "course-link" + numString;

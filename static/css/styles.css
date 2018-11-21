@@ -275,6 +275,10 @@ table th {
     margin: 0 auto;
 }
 
+.schedule-title {
+    padding: 0px 0px 0px 20px;
+}
+
 /*********PROFILE*************/
 
 .profile {
@@ -283,11 +287,21 @@ table th {
 }
 
 .profile-pic {
-    float: left;
-    width: 30%;
+     width: 100%;
+    text-align: center;
+
+}
+.profile-pic img {
+        height: 300px;
+}
+.profile-data {
+    color: #fff;
+    width: 100%;
+    text-align: center;
 }
 
-.profile-data {
-    float: right;
-    width: 70%;
+.profile-data .title {
+
+    color: #efab00;
+    padding-right: 20px;
 }
