@@ -37,7 +37,7 @@
             <th>Notes</th>
           </tr>
           <tr>
-              <td><input id="input0" type="checkbox" name="checkbox"></td>
+              <td><input id="input0" type="radio" name="checkbox" checked="checked"></td>
             <td id="course-0"></td>
             <td id="tutor0"></td>
             <td id="day0"></td>
@@ -45,7 +45,7 @@
             <td id="note0"></td>
           </tr>
           <tr>
-              <td><input id="input1" type="checkbox" name="checkbox"></td>
+              <td><input id="input1" type="radio" name="checkbox"></td>
             <td id="course-1"></td>
             <td id="tutor1"></td>
             <td id="day1"></td>
@@ -53,7 +53,7 @@
             <td id="note1"></td>
           </tr>
          <tr>
-             <td><input id="input2" type="checkbox" name="checkbox"></td>
+             <td><input id="input2" type="radio" name="checkbox"></td>
             <td id="course-2"></td>
             <td id="tutor2"></td>
             <td id="day2"></td>
@@ -61,7 +61,7 @@
             <td id="note2"></td>
           </tr>
           <tr>
-              <td><input id="input3" type="checkbox" name="checkbox"></td>
+              <td><input id="input3" type="radio" name="checkbox"></td>
             <td id="course-3"></td>
             <td id="tutor3"></td>
             <td id="day3"></td>
@@ -79,6 +79,7 @@
         var times = {{ times | safe }}
         var notes = {{ notes | safe }}
         var course_numbers = {{ course_numbers | safe }}
+
     </script>
     <script src="{{url_for('static', filename='schedule.js')}}"></script>
     <script src="{{url_for('static', filename='comments.js')}}"></script>

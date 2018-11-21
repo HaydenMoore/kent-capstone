@@ -13,13 +13,14 @@ for (var i = 0; i < 4; i++){
     var time = times[i];
     var note = notes[i];
     var course_number = course_numbers[i];
+    var username = localStorage.getItem("username");
 
     document.getElementById(thisCourse).innerHTML = course;
     document.getElementById(thisTutor).innerHTML = tutor;
     document.getElementById(thisDay).innerHTML = day;
     document.getElementById(thisTime).innerHTML = time;
     document.getElementById(thisNote).innerHTML = note;
-    document.getElementById(thisInput).value = course_number;
+    document.getElementById(thisInput).value = course_number + ", " + username;
 
 };
 
